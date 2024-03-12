@@ -7,7 +7,6 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      <nixos-hardware/lenovo/thinkpad/x1/9th-gen>
       ./hardware-configuration.nix
     ];
 
@@ -141,7 +140,7 @@
       
       # Development
       vscode
-      filezilla
+      # filezilla
       atuin
     ];
   };
@@ -160,7 +159,10 @@
   virtualisation.docker.enable = true;
 
   # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
+
+  # Enable the Flakes feature and the accompanying new nix command-line tool
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -195,7 +197,7 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
   
-  # Fix for Tailscale exit node
+  # Fix for Tailscale exit node / Breaks Docker
   networking.firewall.checkReversePath = "loose";
 
   # This value determines the NixOS release from which the default
