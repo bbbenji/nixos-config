@@ -16,7 +16,7 @@ sudo nixos-rebuild switch
 # Update
 
 ```shell
-sudo nix-collect-garbage — delete-older-than 30d
-sudo nixos-rebuild boot — upgrade
+sudo nix-collect-garbage --delete-older-than 30d
+sudo nixos-rebuild boot --upgrade
 flatpak update -y
 ```
