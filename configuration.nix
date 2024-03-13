@@ -140,8 +140,10 @@
       
       # Development
       vscode
+      taxi
       # filezilla
       atuin
+      direnv
     ];
   };
   
