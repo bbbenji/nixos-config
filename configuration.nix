@@ -140,10 +140,8 @@
       
       # Development
       vscode
-      taxi
       # filezilla
       atuin
-      direnv
     ];
   };
   
@@ -178,6 +176,8 @@
     git
     openfortivpn
     yarn
+    direnv
+    htop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -189,6 +189,8 @@
   # };
 
   # List services that you want to enable:
+
+  services.fwupd.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

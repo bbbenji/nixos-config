@@ -19,4 +19,5 @@ sudo nixos-rebuild switch
 sudo nix-collect-garbage --delete-older-than 30d
 sudo nixos-rebuild boot --upgrade
 flatpak update -y
+fwupdmgr refresh && fwupdmgr get-updates && fwupdmgr update
 ```
