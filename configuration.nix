@@ -121,6 +121,7 @@
 
       # System
       appimage-run
+      topgrade
       
       # Network Apps
       tailscale
@@ -142,6 +143,8 @@
       vscode
       # filezilla
       atuin
+      android-tools
+      
     ];
   };
   
@@ -178,6 +181,9 @@
     yarn
     direnv
     htop
+    unzip
+    yad
+    bottles
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
