@@ -17,7 +17,11 @@ sudo nixos-rebuild switch
 
 ```shell
 sudo nix-collect-garbage --delete-older-than 30d
-sudo nixos-rebuild boot --upgrade
-flatpak update -y
-fwupdmgr refresh --force && fwupdmgr get-updates && fwupdmgr update
+
+sudo nix-channel --update && nix-channel --update
+sudo nix flake update && nix flake update
+topgrade --disable containers
+# sudo nixos-rebuild boot --upgrade
+# flatpak update -y
+# fwupdmgr refresh --force && fwupdmgr get-updates && fwupdmgr update
 ```

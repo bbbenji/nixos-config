@@ -29,6 +29,8 @@
   networking.extraHosts =
     ''
       10.1.1.140 gitlab.alab.local
+      13.227.146.54 api.stage.alab.pl
+      18.66.233.63 cms.alab.pl
     '';
 
   # Set your time zone.
@@ -126,6 +128,8 @@
       # Network Apps
       tailscale
       localsend
+      calls
+      modem-manager-gui
       
       # Apps
       spotify
@@ -141,9 +145,12 @@
       
       # Development
       vscode
-      # filezilla
+      filezilla
       atuin
       android-tools
+      sqlitebrowser
+      busybox
+      esptool
       
     ];
   };
@@ -188,6 +195,7 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
+  programs.calls.enable = true;
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
