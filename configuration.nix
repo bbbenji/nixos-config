@@ -165,9 +165,6 @@
 
   security.auditd.enable = true;
 
-  # Performance optimization
-  zramSwap.enable = true;
-
   # Firewall settings
   networking.firewall.checkReversePath = "loose";
 

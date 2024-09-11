@@ -18,9 +18,16 @@
     filezilla
     sqlitebrowser
     vscode
+    # code-cursor
+    yarn
+    direnv
+    nodejs
+    yad
+    openfortivpn
+    docker-compose
     whitesur-gtk-theme
     whitesur-icon-theme
-    whitesur-cursors 
+    whitesur-cursors
   ];
 
   programs.git = {
