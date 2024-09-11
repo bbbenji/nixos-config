@@ -13,9 +13,10 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   
-  networking.extraHosts = ''
-    10.1.1.140 gitlab.alab.local
-  '';
+  # Use networking.hosts instead of networking.extraHosts
+  networking.hosts = {
+    "10.1.1.140" = [ "gitlab.alab.local" ];
+  };
 
   time.timeZone = "Europe/Warsaw";
 
@@ -69,6 +70,7 @@
     isNormalUser = true;
     description = "Benji";
     extraGroups = [ "networkmanager" "wheel" "dialout" "docker" ];
+    shell = pkgs.fish;
   };
 
   # Enable Docker
@@ -88,16 +90,17 @@
     wget
     curl
     usbutils
-    nodejs
-    docker-compose
     git
-    openfortivpn
-    yarn
-    direnv
     htop
     unzip
-    yad
+    busybox
+    esptool
     bottles
+    appimage-run
+    topgrade
+    tailscale
+    atuin
+    android-tools
   ];
 
   # Enable programs
@@ -107,6 +110,7 @@
       enable = true;
       package = pkgs.gnomeExtensions.gsconnect;
     };
+    fish.enable = true;  # Enable fish shell system-wide
   };
 
   # Fonts
@@ -132,6 +136,37 @@
     mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
     magicOrExtension = ''\x7fELF....AI\x02'';
   };
+
+  # Security enhancements
+  # networking.firewall = {
+  #   enable = true;
+  #   allowedTCPPorts = [ 80 443 ];  # Add specific ports as needed
+  # };
+
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   allowReboot = false;
+  # };
+
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
+
+  services.fail2ban.enable = true;
+
+  security.apparmor = {
+    enable = true;
+    packages = [ pkgs.apparmor-profiles ];
+  };
+
+  security.auditd.enable = true;
+
+  # Performance optimization
+  zramSwap.enable = true;
 
   # Firewall settings
   networking.firewall.checkReversePath = "loose";
