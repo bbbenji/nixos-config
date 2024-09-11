@@ -87,7 +87,17 @@
   environment.systemPackages = with pkgs; [
     wget
     curl
+    usbutils
+    nodejs
+    docker-compose
     git
+    openfortivpn
+    yarn
+    direnv
+    htop
+    unzip
+    yad
+    bottles
   ];
 
   # Enable programs
