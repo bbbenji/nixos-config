@@ -46,6 +46,11 @@
     displayManager.cosmic-greeter.enable = true;
   };
 
+  # COSMIC keyboard workaround - TEMPORARY
+  systemd.tmpfiles.rules = [
+    "L /usr/share/X11/xkb/rules/base.xml - - - - ${pkgs.xkeyboard_config}/share/X11/xkb/rules/base.xml"
+  ];
+
   console.keyMap = "pl2";
 
   services.keyd = {
