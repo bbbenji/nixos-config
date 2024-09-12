@@ -18,8 +18,8 @@
     filezilla
     sqlitebrowser
     vscode
-    # code-cursor
     yarn
+    # corepack
     direnv
     nodejs
     yad
@@ -61,30 +61,7 @@
     userSettings = {
       "editor.fontFamily" = "'FiraCode Nerd Font', 'Droid Sans Mono', 'monospace', monospace";
       "editor.fontLigatures" = true;
-      "editor.formatOnSave" = true;
-      "files.autoSave" = "onFocusChange";
     };
-  };
-
-  # Gnome settings
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      gtk-theme = "WhiteSur-dark";
-      icon-theme = "WhiteSur-dark";
-      cursor-theme = "WhiteSur-cursors";
-      enable-hot-corners = false;
-    };
-    # "org/gnome/desktop/wm/preferences" = {
-    #   button-layout = "appmenu:minimize,maximize,close";
-    # };
-    # "org/gnome/shell" = {
-    #   favorite-apps = [
-    #     "firefox.desktop"
-    #     "org.gnome.Terminal.desktop"
-    #     "org.gnome.Nautilus.desktop"
-    #     "code.desktop"
-    #   ];
-    # };
   };
 
   home.stateVersion = "23.11";
