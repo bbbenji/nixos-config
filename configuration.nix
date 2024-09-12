@@ -33,18 +33,17 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # Enable X11 and GNOME
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome = {
+  # Enable X11 and COSMIC
+  services = {
+    xserver = {
       enable = true;
-      sessionPath = [ pkgs.gedit pkgs.mutter ];
+      xkb = {
+        layout = "pl";
+        variant = "";
+      };
     };
-    xkb = {
-      layout = "pl";
-      variant = "";
-    };
+    desktopManager.cosmic.enable = true;
+    displayManager.cosmic-greeter.enable = true;
   };
 
   console.keyMap = "pl2";
@@ -105,12 +104,7 @@
 
   # Enable programs
   programs = {
-    calls.enable = true;
-    kdeconnect = {
-      enable = true;
-      package = pkgs.gnomeExtensions.gsconnect;
-    };
-    fish.enable = true;  # Enable fish shell system-wide
+    fish.enable = true;
   };
 
   # Fonts
@@ -165,7 +159,6 @@
 
   security.auditd.enable = true;
 
-  # Firewall settings
   networking.firewall.checkReversePath = "loose";
 
   system.stateVersion = "23.11";
