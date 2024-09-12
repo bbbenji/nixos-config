@@ -14,7 +14,6 @@
     spotify
     albert
     signal-desktop
-    gnome-tweaks
     filezilla
     sqlitebrowser
     vscode

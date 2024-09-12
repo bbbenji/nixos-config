@@ -48,6 +48,29 @@
 
   console.keyMap = "pl2";
 
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        ids = [ "*" ];
+        settings = {
+          main = {
+            leftalt = "layer(control)";
+            leftcontrol = "layer(alt)";
+          };
+        };
+      };
+    };
+  };
+  # Optional, but makes sure that when you type the make palm rejection work with keyd
+  # https://github.com/rvaiya/keyd/issues/723
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [Serial Keyboards]
+    MatchUdevType=keyboard
+    MatchName=keyd virtual keyboard
+    AttrKeyboardIntegration=internal
+  '';
+
   # Enable various services
   services.printing.enable = true;
   services.flatpak.enable = true;
