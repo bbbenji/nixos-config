@@ -17,6 +17,7 @@
     filezilla
     sqlitebrowser
     vscode
+    code-cursor
     yarn
     # corepack
     direnv
@@ -27,6 +28,8 @@
     whitesur-gtk-theme
     whitesur-icon-theme
     whitesur-cursors
+    gnome-tweaks
+    # flameshot
   ];
 
   programs.git = {

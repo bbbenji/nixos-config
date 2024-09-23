@@ -37,13 +37,20 @@
   services = {
     xserver = {
       enable = true;
+      # Start Gnome
+      displayManager.gdm.enable = true;
+      desktopManager.gnome = {
+        enable = true;
+        sessionPath = [ pkgs.gedit pkgs.mutter ];
+      };
+      # End Gnome
       xkb = {
         layout = "pl";
         variant = "";
       };
     };
-    desktopManager.cosmic.enable = true;
-    displayManager.cosmic-greeter.enable = true;
+    # desktopManager.cosmic.enable = true;
+    # displayManager.cosmic-greeter.enable = true;
   };
 
   # COSMIC keyboard workaround - TEMPORARY
@@ -128,6 +135,7 @@
     tailscale
     atuin
     android-tools
+    openssl
   ];
 
   # Enable programs
@@ -147,6 +155,8 @@
     mplus-outline-fonts.githubRelease
     dina-font
     proggyfonts
+    corefonts
+    vistafonts
   ];
 
   # AppImage support
