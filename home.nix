@@ -49,7 +49,7 @@
     shellAliases = {
       update = "nix flake update";
       upgrade = "sudo nixos-rebuild switch --flake .# && topgrade --disable containers";
-      cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
+      cleanup = "sudo nix-collect-garbage --delete-older-than 7d && nix-collect-garbage --delete-older-than 7d";
     };
   };
 
