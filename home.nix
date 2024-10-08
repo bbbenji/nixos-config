@@ -47,7 +47,7 @@
       set -g fish_greeting
     '';
     shellAliases = {
-      update = "nix flake updat";
+      update = "nix flake update";
       upgrade = "sudo nixos-rebuild switch --flake .# && topgrade --disable containers";
       cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
     };
