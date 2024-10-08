@@ -19,7 +19,6 @@
     vscode
     code-cursor
     yarn
-    # corepack
     direnv
     nodejs
     yad
@@ -48,8 +47,9 @@
       set -g fish_greeting
     '';
     shellAliases = {
-      update = "sudo nixos-rebuild switch";
-      upgrade = "sudo nixos-rebuild switch --upgrade";
+      update = "nix flake updat";
+      upgrade = "sudo nixos-rebuild switch --flake .# && topgrade --disable containers";
+      cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
     };
   };
 
