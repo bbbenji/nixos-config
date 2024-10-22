@@ -112,7 +112,7 @@
 
   # Nix settings
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     extraOptions = "experimental-features = nix-command flakes";
   };
 
@@ -136,6 +136,7 @@
     atuin
     android-tools
     openssl
+    imagemagick
   ];
 
   # Enable programs
@@ -146,7 +147,7 @@
   # Fonts
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     liberation_ttf
     fira-code
