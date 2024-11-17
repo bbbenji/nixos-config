@@ -49,8 +49,10 @@
         variant = "";
       };
     };
+    # Start COSMIC
     # desktopManager.cosmic.enable = true;
     # displayManager.cosmic-greeter.enable = true;
+    # End COSMIC
   };
 
   # COSMIC keyboard workaround - TEMPORARY
@@ -88,6 +90,7 @@
   services.flatpak.enable = true;
   services.tailscale.enable = true;
   services.fwupd.enable = true;
+  services.bpftune.enable = true;
 
   # Enable sound with pipewire
   security.rtkit.enable = true;
@@ -137,6 +140,7 @@
     android-tools
     openssl
     imagemagick
+    bpftune
   ];
 
   # Enable programs
