@@ -28,7 +28,7 @@
     whitesur-icon-theme
     whitesur-cursors
     gnome-tweaks
-    orca-slicer
+    # orca-slicer
     glab
     openscad
     # flameshot
