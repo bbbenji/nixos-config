@@ -141,6 +141,7 @@
     openssl
     imagemagick
     bpftune
+    pixelflasher
   ];
 
   # Enable programs

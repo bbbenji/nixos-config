@@ -22,6 +22,9 @@
         inherit system;
         config.allowUnfree = true;
       };
+      overlay = final: prev: {
+        pixelflasher = final.callPackage ./pixelflasher.nix { };
+      };
     in {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -29,6 +32,9 @@
           ./configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
           home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = [ overlay ];
+          }
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

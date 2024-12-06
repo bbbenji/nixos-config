@@ -32,6 +32,7 @@
     glab
     openscad
     # flameshot
+    # pixelflasher
   ];
 
   programs.git = {
