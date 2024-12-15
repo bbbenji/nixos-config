@@ -91,6 +91,7 @@
   services.tailscale.enable = true;
   services.fwupd.enable = true;
   services.bpftune.enable = true;
+  services.usbmuxd.enable = true;
 
   # Enable sound with pipewire
   security.rtkit.enable = true;
@@ -142,6 +143,7 @@
     imagemagick
     bpftune
     pixelflasher
+    libimobiledevice
   ];
 
   # Enable programs
