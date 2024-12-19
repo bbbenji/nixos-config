@@ -1,5 +1,16 @@
 # nixos-config
 
+This repository holds a flake-based NixOS configuration for easy reproducibility and maintenance.
+
+## Structure
+
+- **flake.nix**: Defines system inputs and main configuration.
+- **configuration.nix**: System-level settings (services, networking, locales, etc.).
+- **hardware-configuration.nix**: Auto-generated hardware config.
+- **home.nix**: Per-user configuration managed by home-manager.
+- **pixelflasher.nix**: Custom derivation for PixelFlasher.
+- **README.md**: Documentation and instructions.
+
 ## Install
 
 By default, NixOS places the configuration in /etc/nixos, which requires root permissions for modification, making it inconvenient for daily use. However, you can place your flake in ~/nixos-config and create a symbolic link in /etc/nixos as follows:

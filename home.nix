@@ -28,17 +28,14 @@
     whitesur-icon-theme
     whitesur-cursors
     gnome-tweaks
-    # orca-slicer
     glab
     openscad
-    # flameshot
-    # pixelflasher
   ];
 
   programs.git = {
     enable = true;
     userName = "Benji";
-    # userEmail = "your.email@example.com";  # Replace with your email
+    # userEmail = "your.email@example.com"; # Replace if needed
     extraConfig = {
       core.editor = "code --wait";
       pull.rebase = true;

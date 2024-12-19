@@ -8,7 +8,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    
     # https://github.com/lilyinstarlight/nixos-cosmic
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
@@ -28,7 +28,7 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
+        config.allowUnfree = true; # Allow unfree packages globally
       };
       overlay = final: prev: {
         pixelflasher = final.callPackage ./pixelflasher.nix { };
@@ -42,26 +42,25 @@
           home-manager.nixosModules.home-manager
           {
             nixpkgs.overlays = [ overlay ];
-          }
-          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.benji = import ./home.nix;
             home-manager.backupFileExtension = "backup";
           }
-          # NixOS Cosmic specific settings
+          # Nix substituters and trusted keys for COSMIC
           {
             nix.settings = {
               substituters = [ "https://cosmic.cachix.org/" ];
               trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
             };
           }
-          # Ghostty
+          # Ghostty integration
           {
             environment.systemPackages = [
               ghostty.packages.x86_64-linux.default
             ];
           }
+          # NixOS Cosmic module
           nixos-cosmic.nixosModules.default
         ];
       };
