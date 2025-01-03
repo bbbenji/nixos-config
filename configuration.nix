@@ -132,6 +132,7 @@
 
   # System Packages
   environment.systemPackages = with pkgs; [
+    ghostty
     wget
     curl
     usbutils
@@ -140,7 +141,7 @@
     unzip
     busybox
     esptool
-    bottles
+    # bottles
     appimage-run
     topgrade
     tailscale

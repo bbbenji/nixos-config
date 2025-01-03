@@ -14,16 +14,9 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # https://github.com/ghostty-org/ghostty#nix-package
-    ghostty = {
-      url = "git+ssh://git@github.com/ghostty-org/ghostty";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-      inputs.nixpkgs-unstable.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, nixos-cosmic, ghostty, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, nixos-cosmic, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -53,12 +46,6 @@
               substituters = [ "https://cosmic.cachix.org/" ];
               trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
             };
-          }
-          # Ghostty integration
-          {
-            environment.systemPackages = [
-              ghostty.packages.x86_64-linux.default
-            ];
           }
           # NixOS Cosmic module
           nixos-cosmic.nixosModules.default
