@@ -53,10 +53,10 @@
     };
     # End Gnome
 
-    # Start COSMIC
+    # # Start COSMIC
     # desktopManager.cosmic.enable = true;
     # displayManager.cosmic-greeter.enable = true;
-    # End COSMIC
+    # # End COSMIC
 
   };
 
