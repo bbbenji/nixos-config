@@ -152,6 +152,7 @@
     bpftune
     pixelflasher
     libimobiledevice
+    unrar
   ];
 
   # Fish Shell
