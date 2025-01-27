@@ -30,6 +30,7 @@
     gnome-tweaks
     glab
     openscad
+    orca-slicer
   ];
 
   programs.git = {
