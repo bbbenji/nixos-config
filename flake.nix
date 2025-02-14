@@ -14,9 +14,17 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # https://github.com/Svenum/Solaar-Flake
+    solaar = {
+      url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz"; # For latest stable version
+      #url = "https://flakehub.com/f/Svenum/Solaar-Flake/0.1.1.tar.gz"; # uncomment line for solaar version 1.1.13
+      #url = "github:Svenum/Solaar-Flake/main"; # Uncomment line for latest unstable version
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, nixos-cosmic, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, nixos-cosmic, solaar, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -47,8 +55,9 @@
               trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
             };
           }
-          # NixOS Cosmic module
+          # Modules
           nixos-cosmic.nixosModules.default
+          solaar.nixosModules.default
         ];
       };
     };
