@@ -31,6 +31,7 @@
     glab
     openscad
     orca-slicer
+    xorg.xcursorthemes
   ];
 
   programs.git = {
