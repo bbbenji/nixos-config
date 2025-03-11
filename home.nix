@@ -202,6 +202,10 @@
         "editor.fontLigatures" = true;
         "editor.fontSize" = 14;
         "editor.lineHeight" = 22;
+        "editor.minimap.enabled" = true;
+        "editor.minimap.renderCharacters" = true;
+        "editor.minimap.maxColumn" = 120;
+        "editor.minimap.showSlider" = "always";
 
         # Editor behavior
         "editor.formatOnSave" = true;
