@@ -146,12 +146,28 @@
         # Language support
         bbenoist.nix
         ms-python.python
-
+        ms-python.vscode-pylance
+        golang.go
+        vue.volar
+        
+        # Web development
+        bradlc.vscode-tailwindcss
+        esbenp.prettier-vscode
+        
         # DevOps
         ms-azuretools.vscode-docker
+        github.vscode-github-actions
+        ms-vscode-remote.remote-containers
 
         # Utilities
         eamodio.gitlens
+        jock.svg
+        mechatroner.rainbow-csv
+        randomfractalsinc.vscode-data-preview
+        
+        # Nix specific
+        arrterian.nix-env-selector
+        mkhl.direnv
       ];
 
       userSettings = {
