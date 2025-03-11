@@ -60,14 +60,16 @@
 
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      bbenoist.nix
-      ms-python.python
-      ms-azuretools.vscode-docker
-    ];
-    userSettings = {
-      "editor.fontFamily" = "'FiraCode Nerd Font', 'Droid Sans Mono', 'monospace', monospace";
-      "editor.fontLigatures" = true;
+    profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+        ms-python.python
+        ms-azuretools.vscode-docker
+      ];
+      userSettings = {
+        "editor.fontFamily" = "'FiraCode Nerd Font', 'Droid Sans Mono', 'monospace', monospace";
+        "editor.fontLigatures" = true;
+      };
     };
   };
 
