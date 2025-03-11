@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     firefox
     google-chrome
+    brave
     beeper
     localsend
     calls
@@ -32,6 +33,7 @@
     openscad
     orca-slicer
     xorg.xcursorthemes
+    gnomeExtensions.solaar-extension
   ];
 
   programs.git = {

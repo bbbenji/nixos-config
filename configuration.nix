@@ -130,6 +130,14 @@
   # Docker
   virtualisation.docker.enable = true;
 
+  # VirtualBox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "benji" ];
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.dragAndDrop = true;
+  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
+
   # Nix configuration (allowUnfree already set in flake.nix)
   nix = {
     package = pkgs.nixVersions.stable;
