@@ -2,6 +2,7 @@
   description = "NixOS configuration with flakes";
 
   inputs = {
+    # Core inputs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
@@ -9,53 +10,71 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
+    # Desktop environment
     # https://github.com/lilyinstarlight/nixos-cosmic
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Device support
     # https://github.com/Svenum/Solaar-Flake
     solaar = {
-      url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz"; # For latest stable version
-      #url = "https://flakehub.com/f/Svenum/Solaar-Flake/0.1.1.tar.gz"; # uncomment line for solaar version 1.1.13
-      #url = "github:Svenum/Solaar-Flake/main"; # Uncomment line for latest unstable version
+      url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, nixos-cosmic, solaar, ... }@inputs:
+  outputs = inputs @ { self, nixpkgs, nixos-hardware, home-manager, nixos-cosmic, solaar, ... }:
     let
       system = "x86_64-linux";
+      
+      # Create optimized package set
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true; # Allow unfree packages globally
+        config.allowUnfree = true;
       };
-      overlay = final: prev: {
-        pixelflasher = final.callPackage ./pixelflasher.nix { };
-      };
+      
+      # Custom overlay for local packages
+      overlays = [
+        (final: prev: {
+          pixelflasher = final.callPackage ./pixelflasher.nix { };
+        })
+      ];
     in {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit inputs; };
         modules = [
-          ./configuration.nix
+          # Hardware configuration
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
+          ./hardware-configuration.nix
+          
+          # Base system configuration
+          ./configuration.nix
+          
+          # Home-manager configuration
           home-manager.nixosModules.home-manager
           {
-            nixpkgs.overlays = [ overlay ];
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.benji = import ./home.nix;
-            home-manager.backupFileExtension = "backup";
+            nixpkgs.overlays = overlays;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.benji = import ./home.nix;
+              backupFileExtension = "backup";
+              extraSpecialArgs = { inherit inputs; };
+            };
           }
-          # Nix substituters and trusted keys for COSMIC
+          
+          # Cachix for COSMIC
           {
             nix.settings = {
               substituters = [ "https://cosmic.cachix.org/" ];
               trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
             };
           }
-          # Modules
+          
+          # Additional modules
           nixos-cosmic.nixosModules.default
           solaar.nixosModules.default
         ];
