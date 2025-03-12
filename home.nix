@@ -196,38 +196,39 @@
         mkhl.direnv
       ];
 
-      userSettings = {
-        # Editor appearance
-        "editor.fontFamily" = "'FiraCode Nerd Font', 'Droid Sans Mono', 'monospace', monospace";
-        "editor.fontLigatures" = true;
-        "editor.fontSize" = 14;
-        "editor.lineHeight" = 22;
-        "editor.minimap.enabled" = true;
-        "editor.minimap.renderCharacters" = true;
-        "editor.minimap.maxColumn" = 120;
-        "editor.minimap.showSlider" = "always";
+      # userSettings = {
+      #   # Editor appearance
+      #   "editor.fontFamily" = "'FiraCode Nerd Font', 'Droid Sans Mono', 'monospace', monospace";
+      #   "editor.fontLigatures" = true;
+      #   "editor.fontSize" = 14;
+      #   "editor.lineHeight" = 22;
+      #   "editor.minimap.enabled" = true;
+      #   "editor.minimap.renderCharacters" = true;
+      #   "editor.minimap.maxColumn" = 120;
+      #   "editor.minimap.showSlider" = "always";
 
-        # Editor behavior
-        "editor.formatOnSave" = true;
-        "editor.tabSize" = 2;
-        "editor.insertSpaces" = true;
+      #   # Editor behavior
+      #   "editor.formatOnSave" = true;
+      #   "editor.tabSize" = 2;
+      #   "editor.insertSpaces" = true;
 
-        # Workbench settings
-        "workbench.startupEditor" = "none";
-        "workbench.colorTheme" = "Default Dark+";
+      #   # Workbench settings
+      #   "workbench.startupEditor" = "none";
+      #   "workbench.colorTheme" = "Default Dark+";
 
-        # Terminal settings
-        "terminal.integrated.fontFamily" = "'FiraCode Nerd Font'";
-        "terminal.integrated.fontSize" = 14;
+      #   # Terminal settings
+      #   "terminal.integrated.fontFamily" = "'FiraCode Nerd Font'";
+      #   "terminal.integrated.fontSize" = 14;
 
-        # File handling
-        "files.trimTrailingWhitespace" = true;
-        "files.insertFinalNewline" = true;
-        "files.autoSave" = "onFocusChange";
+      #   # File handling
+      #   "files.trimTrailingWhitespace" = true;
+      #   "files.insertFinalNewline" = true;
+      #   "files.autoSave" = "onFocusChange";
+      #   "editor.defaultFormatter" = "esbenp.prettier-vscode"
 
-        # Cursor AI settings
-        "cursor.codebase.contextType" = "auto";
-      };
+      #   # Cursor AI settings
+      #   "cursor.codebase.contextType" = "auto";
+      # };
     };
   };
 
@@ -251,17 +252,4 @@
   # Python development environment - managed through packages
   # Note: Using system packages instead of home-manager's programs.python
   # as it's not available in the current home-manager version
-
-  # Make Cursor settings writable
-  home.activation.makeCursorConfigWritable = {
-    after = [ "writeBoundary" ];
-    before = [ ];
-    data = ''
-      CURSOR_SETTINGS="${config.xdg.configHome}/Cursor/User/settings.json"
-      if [ -L "$CURSOR_SETTINGS" ]; then
-        echo "Making Cursor settings writable..."
-        install -m 0640 "$(readlink "$CURSOR_SETTINGS")" "$CURSOR_SETTINGS"
-      fi
-    '';
-  };
 }
