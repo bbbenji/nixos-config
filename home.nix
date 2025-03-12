@@ -251,4 +251,17 @@
   # Python development environment - managed through packages
   # Note: Using system packages instead of home-manager's programs.python
   # as it's not available in the current home-manager version
+
+  # Make Cursor settings writable
+  home.activation.makeCursorConfigWritable = {
+    after = [ "writeBoundary" ];
+    before = [ ];
+    data = ''
+      CURSOR_SETTINGS="${config.xdg.configHome}/Cursor/User/settings.json"
+      if [ -L "$CURSOR_SETTINGS" ]; then
+        echo "Making Cursor settings writable..."
+        install -m 0640 "$(readlink "$CURSOR_SETTINGS")" "$CURSOR_SETTINGS"
+      fi
+    '';
+  };
 }
