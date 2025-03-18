@@ -42,6 +42,7 @@
     nodejs
     docker-compose
     glab
+    awscli2
 
     # Python development
     (python311.withPackages (ps: with ps; [
