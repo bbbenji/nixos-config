@@ -8,10 +8,10 @@
       efi.canTouchEfiVariables = true;
     };
     kernelParams = [ "kvm.enable_virt_at_load=0" ];
-    
+
     # LUKS Encryption - CRITICAL: DO NOT REMOVE
     initrd.luks.devices."luks-36c05312-8950-44c2-9f98-a1881126b00e".device = "/dev/disk/by-uuid/36c05312-8950-44c2-9f98-a1881126b00e";
-    
+
     # AppImage Support
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
@@ -62,12 +62,12 @@
       enable = true;
       sessionPath = [ pkgs.gedit pkgs.mutter ];
     };
-    
+
     # COSMIC Desktop
     # desktopManager.cosmic.enable = true;
     # displayManager.cosmic-greeter.enable = true;
   };
-  
+
   # Enable GNOME Extensions installed in home.nix
   services.gnome.gnome-browser-connector.enable = true;
 
@@ -118,7 +118,7 @@
     bpftune.enable = true;
     usbmuxd.enable = true;
     fail2ban.enable = true;
-    
+
     # Logitech device support
     solaar = {
       enable = true;
@@ -127,7 +127,7 @@
       batteryIcons = "regular";
       extraArgs = "";
     };
-    
+
     # SSH server config
     openssh = {
       enable = true;
@@ -141,16 +141,16 @@
   # Virtualization
   virtualisation = {
     docker.enable = true;
-    virtualbox = {
-      host = {
-        enable = true;
-        enableExtensionPack = true;
-      };
-      guest = {
-        enable = true;
-        dragAndDrop = true;
-      };
-    };
+    # virtualbox = {
+    #   host = {
+    #     enable = true;
+    #     enableExtensionPack = true;
+    #   };
+    #   guest = {
+    #     enable = true;
+    #     dragAndDrop = true;
+    #   };
+    # };
   };
 
   # User configuration
@@ -192,18 +192,18 @@
     busybox
     openssl
     imagemagick
-    
+
     # System tools
     usbutils
     appimage-run
     topgrade
     tailscale
     atuin
-    
+
     # Development
     esptool
     android-tools
-    
+
     # Custom packages
     pixelflasher
     libimobiledevice
@@ -221,13 +221,13 @@
     noto-fonts-cjk-sans
     noto-fonts-emoji
     liberation_ttf
-    
+
     # Monospace fonts
     fira-code
     fira-code-symbols
     nerd-fonts.fira-code
     nerd-fonts.droid-sans-mono
-    
+
     # Additional fonts
     mplus-outline-fonts.githubRelease
     dina-font
