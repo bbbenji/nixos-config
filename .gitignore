@@ -1,0 +1,7 @@
+dotfiles
+node_modules
+extensions
+package.json
+yarn.lock
+.vscode
+CLAUDE.md
