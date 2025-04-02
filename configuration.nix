@@ -51,20 +51,22 @@
 
   # Desktop Environment
   # X11 & Gnome/COSMIC
-  services.xserver = {
-    enable = true;
-    xkb = {
-      layout = "pl";
-      variant = "";
-    };
-    displayManager.gdm.enable = true;
-    desktopManager.gnome = {
+  services = {
+    xserver = {
       enable = true;
-      sessionPath = [ pkgs.gedit pkgs.mutter ];
-    };
+      xkb = {
+        layout = "pl";
+        variant = "";
+      };
+      displayManager.gdm.enable = true;
+      desktopManager.gnome = {
+        enable = true;
+        sessionPath = [ pkgs.gedit pkgs.mutter ];
+      };
 
+    };
     # COSMIC Desktop
-    # desktopManager.cosmic.enable = true;
+    desktopManager.cosmic.enable = true;
     # displayManager.cosmic-greeter.enable = true;
   };
 
