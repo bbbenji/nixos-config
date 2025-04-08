@@ -34,6 +34,7 @@
     gnome-tweaks
     yad
     openfortivpn
+    cachix
 
     # Development
     code-cursor # Main editor
