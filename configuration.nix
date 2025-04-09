@@ -1,6 +1,9 @@
 { config, pkgs, inputs, ... }:
 
 {
+  # Imports
+  imports = [ ./cachix.nix ];
+
   # Boot Configuration
   boot = {
     loader = {

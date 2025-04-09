@@ -9,7 +9,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     # Desktop environment
     # https://github.com/lilyinstarlight/nixos-cosmic
     nixos-cosmic = {
@@ -28,13 +28,13 @@
   outputs = inputs @ { self, nixpkgs, nixos-hardware, home-manager, nixos-cosmic, solaar, ... }:
     let
       system = "x86_64-linux";
-      
+
       # Create optimized package set
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-      
+
       # Custom overlay for local packages
       overlays = [
         (final: prev: {
@@ -49,10 +49,10 @@
           # Hardware configuration
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
           ./hardware-configuration.nix
-          
+
           # Base system configuration
           ./configuration.nix
-          
+
           # Home-manager configuration
           home-manager.nixosModules.home-manager
           {
@@ -65,15 +65,15 @@
               extraSpecialArgs = { inherit inputs; };
             };
           }
-          
-          # Cachix for COSMIC
+
+          # Cachix binaries
           {
             nix.settings = {
               substituters = [ "https://cosmic.cachix.org/" ];
               trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
             };
           }
-          
+
           # Additional modules
           nixos-cosmic.nixosModules.default
           solaar.nixosModules.default
