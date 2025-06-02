@@ -69,8 +69,15 @@
           # Cachix binaries
           {
             nix.settings = {
-              substituters = [ "https://cosmic.cachix.org/" ];
-              trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              substituters = [
+                "https://cosmic.cachix.org/"
+                "https://pebble.cachix.org"
+                "https://cache.nixos.org/"
+              ];
+              trusted-public-keys = [
+                "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+                "pebble.cachix.org-1:aTqwT2hR6lGggw/rPISRcHZctDv2iF7ewsVxf3Hq6ow="
+              ];
             };
           }
 

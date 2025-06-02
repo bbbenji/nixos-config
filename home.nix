@@ -88,7 +88,6 @@
     gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.dash-to-dock
-    # Missing: draw-on-your-screen2 (not found in nixpkgs repository)
     gnomeExtensions.just-perfection
     gnomeExtensions.notification-banner-reloaded
     gnomeExtensions.spotify-tray
@@ -199,39 +198,39 @@
         mkhl.direnv
       ];
 
-      # userSettings = {
-      #   # Editor appearance
-      #   "editor.fontFamily" = "'FiraCode Nerd Font', 'Droid Sans Mono', 'monospace', monospace";
-      #   "editor.fontLigatures" = true;
-      #   "editor.fontSize" = 14;
-      #   "editor.lineHeight" = 22;
-      #   "editor.minimap.enabled" = true;
-      #   "editor.minimap.renderCharacters" = true;
-      #   "editor.minimap.maxColumn" = 120;
-      #   "editor.minimap.showSlider" = "always";
+      userSettings = {
+        # Editor appearance
+        "editor.fontFamily" = "'FiraCode Nerd Font', 'Droid Sans Mono', 'monospace', monospace";
+        "editor.fontLigatures" = true;
+        "editor.fontSize" = 14;
+        "editor.lineHeight" = 22;
+        "editor.minimap.enabled" = true;
+        "editor.minimap.renderCharacters" = true;
+        "editor.minimap.maxColumn" = 120;
+        "editor.minimap.showSlider" = "always";
 
-      #   # Editor behavior
-      #   "editor.formatOnSave" = true;
-      #   "editor.tabSize" = 2;
-      #   "editor.insertSpaces" = true;
+        # Editor behavior
+        "editor.formatOnSave" = true;
+        "editor.tabSize" = 2;
+        "editor.insertSpaces" = true;
 
-      #   # Workbench settings
-      #   "workbench.startupEditor" = "none";
-      #   "workbench.colorTheme" = "Default Dark+";
+        # Workbench settings
+        "workbench.startupEditor" = "none";
+        "workbench.colorTheme" = "Default Dark+";
 
-      #   # Terminal settings
-      #   "terminal.integrated.fontFamily" = "'FiraCode Nerd Font'";
-      #   "terminal.integrated.fontSize" = 14;
+        # Terminal settings
+        "terminal.integrated.fontFamily" = "'FiraCode Nerd Font'";
+        "terminal.integrated.fontSize" = 14;
 
-      #   # File handling
-      #   "files.trimTrailingWhitespace" = true;
-      #   "files.insertFinalNewline" = true;
-      #   "files.autoSave" = "onFocusChange";
-      #   "editor.defaultFormatter" = "esbenp.prettier-vscode"
+        # File handling
+        "files.trimTrailingWhitespace" = true;
+        "files.insertFinalNewline" = true;
+        "files.autoSave" = "onFocusChange";
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
 
-      #   # Cursor AI settings
-      #   "cursor.codebase.contextType" = "auto";
-      # };
+        # Cursor AI settings
+        "cursor.codebase.contextType" = "auto";
+      };
     };
   };
 
