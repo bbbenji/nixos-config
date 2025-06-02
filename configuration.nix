@@ -31,7 +31,7 @@
     hostName = "nixos";
     networkmanager.enable = true;
     hosts = { "10.1.1.140" = [ "gitlab.alab.local" ]; };
-    firewall.checkReversePath = "loose";
+    firewall.checkReversePath = "strict";
   };
 
   # Localization
@@ -71,51 +71,31 @@
     # COSMIC Desktop
     desktopManager.cosmic.enable = true;
     # displayManager.cosmic-greeter.enable = true;
-  };
 
-  # Enable GNOME Extensions installed in home.nix
-  services.gnome.gnome-browser-connector.enable = true;
+    # Enable GNOME Extensions installed in home.nix
+    gnome.gnome-browser-connector.enable = true;
 
-  # COSMIC keyboard workaround
-  systemd.tmpfiles.rules = [
-    "L /usr/share/X11/xkb/rules/base.xml - - - - ${pkgs.xkeyboard_config}/share/X11/xkb/rules/base.xml"
-  ];
-
-  # Input configuration
-  services.keyd = {
-    enable = true;
-    keyboards.default = {
-      ids = [ "*" ];
-      settings.main = {
-        leftalt = "layer(control)";
-        leftcontrol = "layer(alt)";
+    keyd = {
+      enable = true;
+      keyboards.default = {
+        ids = [ "*" ];
+        settings.main = {
+          leftalt = "layer(control)";
+          leftcontrol = "layer(alt)";
+        };
       };
     };
-  };
 
-  # Libinput Quirk for palm rejection w/ Keyd
-  # https://github.com/rvaiya/keyd/issues/723
-  environment.etc."libinput/local-overrides.quirks".text = ''
-    [Serial Keyboards]
-    MatchUdevType=keyboard
-    MatchName=keyd virtual keyboard
-    AttrKeyboardIntegration=internal
-  '';
-
-  # Audio
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa = {
+    pipewire = {
       enable = true;
-      support32Bit = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse.enable = true;
+      jack.enable = true;
     };
-    pulse.enable = true;
-    jack.enable = true;
-  };
 
-  # Core services
-  services = {
     printing.enable = true;
     flatpak.enable = true;
     tailscale.enable = true;
@@ -143,19 +123,26 @@
     };
   };
 
+  # COSMIC keyboard workaround
+  systemd.tmpfiles.rules = [
+    "L /usr/share/X11/xkb/rules/base.xml - - - - ${pkgs.xkeyboard_config}/share/X11/xkb/rules/base.xml"
+  ];
+
+  # Libinput Quirk for palm rejection w/ Keyd
+  # https://github.com/rvaiya/keyd/issues/723
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [Serial Keyboards]
+    MatchUdevType=keyboard
+    MatchName=keyd virtual keyboard
+    AttrKeyboardIntegration=internal
+  '';
+
+  # Audio
+  security.rtkit.enable = true;
+
   # Virtualization
   virtualisation = {
     docker.enable = true;
-    # virtualbox = {
-    #   host = {
-    #     enable = true;
-    #     enableExtensionPack = true;
-    #   };
-    #   guest = {
-    #     enable = true;
-    #     dragAndDrop = true;
-    #   };
-    # };
   };
 
   # User configuration
