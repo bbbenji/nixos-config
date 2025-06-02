@@ -39,6 +39,7 @@
     # Development
     code-cursor # Main editor
     yarn
+    deno
     direnv
     nodejs
     docker-compose
@@ -54,7 +55,7 @@
       mypy
       pytest
       ipython
-      jupyter
+      # jupyter
       pandas
       numpy
       requests

@@ -61,12 +61,12 @@
         layout = "pl";
         variant = "";
       };
-      displayManager.gdm.enable = true;
-      desktopManager.gnome = {
-        enable = true;
-        sessionPath = [ pkgs.gedit pkgs.mutter ];
-      };
-
+    };
+    # Gnome Desktop
+    displayManager.gdm.enable = true;
+    desktopManager.gnome = {
+      enable = true;
+      sessionPath = [ pkgs.gedit pkgs.mutter ];
     };
     # COSMIC Desktop
     desktopManager.cosmic.enable = true;
@@ -204,6 +204,7 @@
     topgrade
     tailscale
     atuin
+    distrobox
 
     # Development
     esptool
