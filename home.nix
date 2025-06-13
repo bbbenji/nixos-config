@@ -18,6 +18,7 @@
 
   # Package categorization
   home.packages = with pkgs; [
+
     # Browsers
     firefox
     google-chrome
@@ -55,7 +56,7 @@
       mypy
       pytest
       ipython
-      # jupyter
+      jupyter
       pandas
       numpy
       requests

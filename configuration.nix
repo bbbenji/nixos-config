@@ -215,6 +215,11 @@
     libimobiledevice
     bpftune
     unrar
+
+    # Wine
+    wineWowPackages.stable # support both 32-bit and 64-bit applications
+    winetricks # winetricks (all versions)
+    wineWowPackages.waylandFull # native wayland support (unstable)
   ];
 
   # Shell configuration
