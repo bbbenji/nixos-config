@@ -48,6 +48,8 @@ sudo nixos-rebuild switch --flake .#
 | `nix flake update`                            | Update flake inputs                     |
 | `nix-collect-garbage --delete-older-than 14d` | Clean up old generations                |
 | `topgrade --disable containers`               | Update system packages and applications |
+| `sudo openfortivpn -v`                        | Connect to VPN using OpenFortiVPN       |
+| `sudo wg-quick up wg0`                        | Bring up the WireGuard interface 'wg0'  |
 
 ### Fish Shell Aliases
 
