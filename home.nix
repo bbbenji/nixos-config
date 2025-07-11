@@ -145,9 +145,10 @@
 
     shellAliases = {
       # System management
-      update = "cd ~/nixos-config && nix flake update";
-      upgrade = "cd ~/nixos-config && sudo nixos-rebuild switch --flake .# && topgrade --disable containers";
-      cleanup = "cd ~/nixos-config && sudo nix-collect-garbage --delete-older-than 14d && nix-collect-garbage --delete-older-than 14d";
+      upnix = "update && upgrade && cleanup";
+      update = "pushd ~/nixos-config && nix flake update && popd";
+      upgrade = "pushd ~/nixos-config && sudo nixos-rebuild switch --flake .# && topgrade --disable containers && popd";
+      cleanup = "pushd ~/nixos-config && sudo nix-collect-garbage --delete-older-than 14d && nix-collect-garbage --delete-older-than 14d && popd";
 
       # Common shortcuts
       ll = "ls -la";
