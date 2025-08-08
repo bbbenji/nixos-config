@@ -76,7 +76,7 @@
 
     # 3D Printing
     openscad
-    orca-slicer
+    # orca-slicer
 
     # Themes and visuals
     whitesur-gtk-theme
@@ -149,6 +149,7 @@
       update = "pushd ~/nixos-config && nix flake update && popd";
       upgrade = "pushd ~/nixos-config && sudo nixos-rebuild switch --flake .# && topgrade --disable containers && popd";
       cleanup = "pushd ~/nixos-config && sudo nix-collect-garbage --delete-older-than 14d && nix-collect-garbage --delete-older-than 14d && popd";
+      upfw = "fwupdmgr refresh --force && fwupdmgr get-updates && fwupdmgr update";
 
       # Common shortcuts
       ll = "ls -la";
