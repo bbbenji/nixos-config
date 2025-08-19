@@ -73,10 +73,11 @@
 
     # Media
     spotify
+    ledger-live-desktop
 
     # 3D Printing
     openscad
-    # orca-slicer
+    orca-slicer
 
     # Themes and visuals
     whitesur-gtk-theme

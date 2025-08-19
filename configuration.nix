@@ -71,7 +71,13 @@
     # COSMIC Desktop
     # desktopManager.cosmic.enable = true;
     # displayManager.cosmic-greeter.enable = true;
+    udev.packages = with pkgs; [
+        ledger-udev-rules
+    ];
   };
+
+  # Hardware
+  hardware.ledger.enable = true;
 
   # Enable GNOME Extensions installed in home.nix
   services.gnome.gnome-browser-connector.enable = true;
