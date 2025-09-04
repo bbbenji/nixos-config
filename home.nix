@@ -36,6 +36,8 @@
     yad
     openfortivpn
     cachix
+    flameshot
+    grim
 
     # Development
     code-cursor # Main editor
@@ -157,6 +159,8 @@
       la = "ls -a";
       ".." = "cd ..";
       "..." = "cd ../..";
+      "...." = "cd ../../..";
+      "....." = "cd ../../../..";
 
       # Python shortcuts
       py = "python";

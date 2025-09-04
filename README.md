@@ -55,12 +55,14 @@ sudo nixos-rebuild switch --flake .#
 
 The configuration includes useful Fish shell aliases:
 
-- `upnix`: Runs update, upgrade & cleanup
-- `update`: Update flake inputs
-- `upgrade`: Rebuild NixOS and run topgrade
-- `cleanup`: Run garbage collection for both system and user
-- `upfw`: Updates and upgrades firmware
-- `mkcd`: Create directory and change to it in one command
+| Alias     | Description                                      |
+| --------- | ------------------------------------------------ |
+| `upnix`   | Runs update, upgrade & cleanup                   |
+| `update`  | Update flake inputs                              |
+| `upgrade` | Rebuild NixOS and run topgrade                   |
+| `cleanup` | Run garbage collection for both system and user  |
+| `upfw`    | Updates and upgrades firmware                    |
+| `mkcd`    | Create directory and change to it in one command |
 
 ## Development Environment
 
