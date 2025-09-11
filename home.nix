@@ -48,6 +48,7 @@
     docker-compose
     glab
     awscli2
+    kiro
 
     # Python development
     (python311.withPackages (ps: with ps; [
@@ -56,9 +57,7 @@
       black
       flake8
       mypy
-      pytest
       ipython
-      jupyter
       pandas
       numpy
       requests

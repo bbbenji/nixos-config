@@ -176,6 +176,7 @@
   nix = {
     package = pkgs.nixVersions.stable;
     settings = {
+      trusted-users = [ "root" "benji" ];
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
       # Warning: max-jobs is automatically set by the system based on available cores
@@ -216,6 +217,7 @@
     # Development
     esptool
     android-tools
+    devenv
 
     # Custom packages
     pixelflasher
