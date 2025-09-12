@@ -39,6 +39,14 @@
     overlays = [
       (final: prev: {
         pixelflasher = final.callPackage ./pixelflasher.nix { };
+        # Pin Google Chrome to version 139
+        google-chrome = prev.google-chrome.overrideAttrs (oldAttrs: rec {
+          version = "139.0.7258.154";
+          src = prev.fetchurl {
+            url = "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${version}-1_amd64.deb";
+            hash = "sha256-6uEk4a5bVlsVNwW+ZHHBgTGmw/ArgrRQwKfLcSITt8o=";
+          };
+        });
       })
     ];
   in {
