@@ -74,7 +74,7 @@ The system uses Cursor (VSCode-based) as the primary editor:
 - FiraCode Nerd Font with ligatures
 - Configured for 2-space indentation
 - Includes extensions for:
-  - Language support (Nix, Python, Go, Vue, etc.)
+  - Language support (Nix, Go, Vue, etc.)
   - Web development (Tailwind CSS, Prettier)
   - DevOps tools (Docker, GitHub Actions)
   - Utilities (GitLens, SVG, Data Preview)
@@ -85,32 +85,6 @@ The system uses Cursor (VSCode-based) as the primary editor:
 - Docker and Docker Compose
 - Git with advanced configuration
 - direnv for per-directory environment variables
-
-### Python Development Environment
-
-- Python 3.11 with essential packages:
-
-  - Development tools: pip, virtualenv, black, flake8, mypy, pytest
-  - Interactive tools: ipython, jupyter
-  - Data science libraries: pandas, numpy
-  - Network libraries: requests
-
-- Python package management:
-
-  - Global tools for project management ( pipenv)
-  - Virtual environment integration with Fish shell
-
-- Productivity shortcuts:
-
-  - `py`: Quick Python access
-  - `venv`: Create and activate virtual environment
-  - `pvenv`: Create virtual environment with virtualenv
-
-- Editor integration:
-  - Full Python language server support with Pylance
-  - Code formatting with Black
-  - Linting with flake8 and mypy
-  - Testing with pytest
 
 ## Desktop Customization
 

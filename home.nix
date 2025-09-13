@@ -50,22 +50,6 @@
     awscli2
     kiro
 
-    # Python development
-    (python311.withPackages (ps: with ps; [
-      pip
-      virtualenv
-      black
-      flake8
-      mypy
-      ipython
-      pandas
-      numpy
-      requests
-    ]))
-
-    # Python tools (would normally be in pipx)
-    pipenv
-
     # File management
     filezilla
 
@@ -139,10 +123,6 @@
       # direnv is loaded automatically via home-manager
 
       # atuin is loaded automatically via home-manager
-
-      # Python settings
-      set -gx PYTHONDONTWRITEBYTECODE 1  # Prevent Python from writing .pyc files
-      set -gx VIRTUAL_ENV_DISABLE_PROMPT 1  # Let fish handle the prompt modification
     '';
 
     shellAliases = {
@@ -160,11 +140,6 @@
       "..." = "cd ../..";
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
-
-      # Python shortcuts
-      py = "python";
-      venv = "python -m venv .venv && source .venv/bin/activate.fish";
-      pvenv = "python -m virtualenv .venv && source .venv/bin/activate.fish";
     };
 
     functions = {
@@ -182,8 +157,6 @@
       extensions = with pkgs.vscode-extensions; [
         # Language support
         bbenoist.nix
-        ms-python.python
-        ms-python.vscode-pylance
         golang.go
         vue.volar
 
@@ -258,8 +231,4 @@
     enable = true;
     nix-direnv.enable = true;
   };
-
-  # Python development environment - managed through packages
-  # Note: Using system packages instead of home-manager's programs.python
-  # as it's not available in the current home-manager version
 }
