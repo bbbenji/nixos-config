@@ -181,6 +181,10 @@
       experimental-features = [ "nix-command" "flakes" ];
       # Warning: max-jobs is automatically set by the system based on available cores
       # Setting this manually is discouraged unless you have a specific reason
+
+      # Vicinae binary cache
+      extra-substituters = [ "https://vicinae.cachix.org" ];
+      extra-trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
     };
     gc = {
       automatic = true;
