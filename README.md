@@ -96,6 +96,10 @@ The system uses Cursor (VSCode-based) as the primary editor:
   - Notification Banner Reloaded
   - Spotify Tray
   - Tailscale Quick Settings
+    - **Troubleshooting**: If the Tailscale Quick Settings tile doesn't work, run:
+      ```bash
+      sudo tailscale set --operator=$USER
+      ```
 
 ## Performance Optimizations
 
