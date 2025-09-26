@@ -24,6 +24,15 @@
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
+
+    # DisplayLink
+    extraModulePackages = [ config.boot.kernelPackages.evdi ];
+    initrd = {
+      # List of modules that are always loaded by the initrd.
+      kernelModules = [
+        "evdi"
+      ];
+    };
   };
 
   # Networking
@@ -57,6 +66,7 @@
   services = {
     xserver = {
       enable = true;
+      videoDrivers = [ "displaylink" "modesetting" ];
       xkb = {
         layout = "pl";
         variant = "";
@@ -86,6 +96,9 @@
   systemd.tmpfiles.rules = [
     "L /usr/share/X11/xkb/rules/base.xml - - - - ${pkgs.xkeyboard_config}/share/X11/xkb/rules/base.xml"
   ];
+
+  # Video
+  systemd.services.dlm.wantedBy = [ "multi-user.target" ];
 
   # Input configuration
   services.keyd = {
@@ -217,6 +230,7 @@
     atuin
     distrobox
     wireguard-tools
+    displaylink
 
     # Development
     esptool
