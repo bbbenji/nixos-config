@@ -49,6 +49,10 @@
     awscli2
     kiro
 
+    # AI
+    claude-code
+    gemini-cli
+
     # File management
     filezilla
 
