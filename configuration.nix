@@ -61,9 +61,9 @@
     };
   };
 
-  # Desktop Environment
-  # X11 & Gnome/COSMIC
+  # Desktop Environment - GNOME
   services = {
+    # X11 Server
     xserver = {
       enable = true;
       videoDrivers = [ "displaylink" "modesetting" ];
@@ -72,33 +72,42 @@
         variant = "";
       };
     };
-    # Gnome Desktop
+
+    # Display Manager
     displayManager.gdm.enable = true;
+
+    # GNOME Desktop
     desktopManager.gnome = {
       enable = true;
       sessionPath = [ pkgs.gedit pkgs.mutter ];
     };
-    # COSMIC Desktop
+
+    # COSMIC Desktop (disabled)
     # desktopManager.cosmic.enable = true;
     # displayManager.cosmic-greeter.enable = true;
+
+    # GNOME Extensions support
+    gnome.gnome-browser-connector.enable = true;
+
+    # Hardware device rules
     udev.packages = with pkgs; [
-        ledger-udev-rules
+      ledger-udev-rules
     ];
   };
 
-  # Hardware
+  # Hardware Configuration
   hardware.ledger.enable = true;
 
-  # Enable GNOME Extensions installed in home.nix
-  services.gnome.gnome-browser-connector.enable = true;
+  # System Services
+  systemd = {
+    # COSMIC keyboard workaround
+    tmpfiles.rules = [
+      "L /usr/share/X11/xkb/rules/base.xml - - - - ${pkgs.xkeyboard_config}/share/X11/xkb/rules/base.xml"
+    ];
 
-  # COSMIC keyboard workaround
-  systemd.tmpfiles.rules = [
-    "L /usr/share/X11/xkb/rules/base.xml - - - - ${pkgs.xkeyboard_config}/share/X11/xkb/rules/base.xml"
-  ];
-
-  # Video
-  systemd.services.dlm.wantedBy = [ "multi-user.target" ];
+    # DisplayLink service
+    services.dlm.wantedBy = [ "multi-user.target" ];
+  };
 
   # Input configuration
   services.keyd = {
@@ -133,15 +142,18 @@
     jack.enable = true;
   };
 
-  # Core services
+  # Additional Services
   services = {
+    # System services
     printing.enable = true;
     flatpak.enable = true;
-    tailscale.enable = true;
     fwupd.enable = true;
     bpftune.enable = true;
     usbmuxd.enable = true;
     fail2ban.enable = true;
+
+    # Network services
+    tailscale.enable = true;
 
     # Logitech device support
     solaar = {
@@ -152,7 +164,7 @@
       extraArgs = "";
     };
 
-    # SSH server config
+    # SSH server
     openssh = {
       enable = true;
       settings = {
@@ -211,8 +223,7 @@
 
   # System Packages
   environment.systemPackages = with pkgs; [
-    # Terminal utilities
-    ghostty
+    # Core utilities
     wget
     curl
     git
@@ -222,31 +233,40 @@
     openssl
     imagemagick
 
-    # System tools
+    # Terminal emulators
+    ghostty
+
+    # System administration
     usbutils
-    appimage-run
     topgrade
     tailscale
+    wireguard-tools
     atuin
     distrobox
-    wireguard-tools
-    displaylink
 
-    # Development
+    # AppImage support
+    appimage-run
+
+    # Hardware support
+    displaylink
+    libimobiledevice
+    bpftune
+
+    # Development tools
     esptool
     android-tools
     devenv
 
-    # Custom packages
-    pixelflasher
-    libimobiledevice
-    bpftune
+    # Archive tools
     unrar
 
-    # Wine
-    wineWowPackages.stable # support both 32-bit and 64-bit applications
-    winetricks # winetricks (all versions)
-    wineWowPackages.waylandFull # native wayland support (unstable)
+    # Custom packages
+    pixelflasher
+
+    # Wine compatibility layer
+    wineWowPackages.stable      # 32-bit and 64-bit support
+    winetricks                  # Wine configuration tool
+    wineWowPackages.waylandFull # Wayland support (experimental)
   ];
 
   # Shell configuration

@@ -16,20 +16,19 @@
     };
   };
 
-  # Package categorization
+  # User Packages
   home.packages = with pkgs; [
-
-    # Browsers
+    # Web browsers
     firefox
     google-chrome
 
-    # Communication
+    # Communication & messaging
     beeper
     localsend
     calls
     signal-desktop
 
-    # System utilities
+    # System utilities & tools
     modem-manager-gui
     gnome-tweaks
     yad
@@ -38,8 +37,8 @@
     flameshot
     grim
 
-    # Development
-    code-cursor # Main editor
+    # Development tools
+    code-cursor
     yarn
     deno
     direnv
@@ -49,41 +48,41 @@
     awscli2
     kiro
 
-    # AI
+    # AI & productivity
     claude-code
     gemini-cli
 
     # File management
     filezilla
 
-    # Databases
+    # Database tools
     sqlitebrowser
 
-    # Media
+    # Media & entertainment
     spotify
     ledger-live-desktop
 
-    # 3D Printing
+    # 3D printing & modeling
     openscad
     orca-slicer
 
-    # Themes and visuals
+    # Desktop themes
     whitesur-gtk-theme
     whitesur-icon-theme
     whitesur-cursors
     xorg.xcursorthemes
 
-    # GNOME Extensions
+    # GNOME Shell extensions
     gnomeExtensions.solaar-extension
     gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.dash-to-dock
-    # Missing: draw-on-your-screen2 (not found in nixpkgs repository)
     gnomeExtensions.just-perfection
     gnomeExtensions.notification-banner-reloaded
     gnomeExtensions.spotify-tray
     gnomeExtensions.tailscale-qs
     gnomeExtensions.wiggle
+    # Note: draw-on-your-screen2 not available in nixpkgs
   ];
 
   # Git configuration
@@ -210,7 +209,7 @@
       #   "files.trimTrailingWhitespace" = true;
       #   "files.insertFinalNewline" = true;
       #   "files.autoSave" = "onFocusChange";
-      #   "editor.defaultFormatter" = "esbenp.prettier-vscode"
+      #   "editor.defaultFormatter" = "esbenp.prettier-vscode";
 
       #   # Cursor AI settings
       #   "cursor.codebase.contextType" = "auto";

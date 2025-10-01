@@ -2,15 +2,17 @@
   description = "NixOS configuration with flakes";
 
   inputs = {
-    # Core inputs
+    # Core NixOS inputs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # Home Manager for user configuration
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Device support
+    # Logitech device support (Solaar)
     # https://github.com/Svenum/Solaar-Flake
     solaar = {
       url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
@@ -33,17 +35,19 @@
   let
     system = "x86_64-linux";
 
-    # Create optimized package set
+    # Create optimized package set with unfree packages allowed
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
     };
 
-    # Custom overlay for local packages
+    # Custom overlays for local packages and version pinning
     overlays = [
       (final: prev: {
+        # Local package definitions
         pixelflasher = final.callPackage ./pixelflasher.nix { };
-        # Pin Google Chrome to version 139
+
+        # Pin Google Chrome to specific version for MV2 support
         google-chrome = prev.google-chrome.overrideAttrs (oldAttrs: rec {
           version = "139.0.7258.154";
           src = prev.fetchurl {
