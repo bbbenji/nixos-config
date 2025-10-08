@@ -47,6 +47,7 @@
     docker-compose
     glab
     awscli2
+    python3
 
     # AI & productivity
     claude-code
