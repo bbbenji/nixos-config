@@ -10,8 +10,8 @@
 
     # Development tooling
     sessionVariables = {
-      EDITOR = "cursor --wait";
-      VISUAL = "cursor --wait";
+      EDITOR = "code --wait";
+      VISUAL = "code --wait";
       BROWSER = "google-chrome";
     };
   };
@@ -38,6 +38,7 @@
     grim
 
     # Development tools
+    vscode
     code-cursor
     yarn
     deno
@@ -46,11 +47,12 @@
     docker-compose
     glab
     awscli2
-    kiro
 
     # AI & productivity
     claude-code
     gemini-cli
+    obsidian
+    synology-drive-client
 
     # File management
     filezilla
@@ -93,7 +95,7 @@
 
     extraConfig = {
       core = {
-        editor = "cursor --wait";
+        editor = "code --wait";
         autocrlf = "input";
       };
       pull.rebase = true;
@@ -153,7 +155,8 @@
   # Editor configuration (Cursor - built on VSCode)
   programs.vscode = {
     enable = true;
-    package = pkgs.code-cursor;  # Use Cursor instead of VSCode
+    # package = pkgs.code-cursor;  # Use Cursor instead of VSCode
+    package = pkgs.vscode;
 
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
