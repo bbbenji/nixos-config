@@ -46,14 +46,14 @@
     nodejs
     docker-compose
     glab
-    awscli2
+    # awscli2
     python3
 
     # AI & productivity
     claude-code
     gemini-cli
-    obsidian
-    synology-drive-client
+    # obsidian
+    # synology-drive-client
 
     # File management
     filezilla
