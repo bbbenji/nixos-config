@@ -46,6 +46,9 @@
       (final: prev: {
         # Local package definitions
         pixelflasher = final.callPackage ./pixelflasher.nix { };
+        antigravity = final.callPackage ./antigravity.nix {
+          nixpkgs = final.path;
+        };
 
         # Pin Google Chrome to specific version for MV2 support
         google-chrome = prev.google-chrome.overrideAttrs (oldAttrs: rec {

@@ -277,7 +277,7 @@
     # Sans-serif fonts
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     liberation_ttf
 
     # Monospace fonts
@@ -291,7 +291,7 @@
     dina-font
     proggyfonts
     corefonts
-    vistafonts
+    vista-fonts
   ];
 
   # Security

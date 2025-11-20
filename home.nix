@@ -52,6 +52,8 @@
     # AI & productivity
     claude-code
     gemini-cli
+    codex
+    antigravity
     # obsidian
     # synology-drive-client
 
@@ -91,10 +93,11 @@
   # Git configuration
   programs.git = {
     enable = true;
-    userName = "Benji";
-    # userEmail = "your.email@example.com"; # Replace if needed
 
-    extraConfig = {
+    # Useful Git aliases
+    settings = {
+      user.name = "Benji";
+      # user.email = "your.email@example.com"; # Replace if needed
       core = {
         editor = "code --wait";
         autocrlf = "input";
@@ -103,18 +106,16 @@
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       fetch.prune = true;
-    };
-
-    # Useful Git aliases
-    aliases = {
-      st = "status -sb";
-      ci = "commit";
-      co = "checkout";
-      br = "branch";
-      unstage = "reset HEAD --";
-      last = "log -1 HEAD";
-      visual = "!gitk";
-      lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+      aliases = {
+        st = "status -sb";
+        ci = "commit";
+        co = "checkout";
+        br = "branch";
+        unstage = "reset HEAD --";
+        last = "log -1 HEAD";
+        visual = "!gitk";
+        lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+      };
     };
   };
 
