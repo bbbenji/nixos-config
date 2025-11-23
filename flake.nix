@@ -18,9 +18,6 @@
       url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Vicinae
-    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs = inputs @ {
@@ -29,7 +26,6 @@
     nixos-hardware,
     home-manager,
     solaar,
-    vicinae,
     ...
   }:
   let
@@ -44,12 +40,6 @@
     # Custom overlays for local packages and version pinning
     overlays = [
       (final: prev: {
-        # Local package definitions
-        pixelflasher = final.callPackage ./pixelflasher.nix { };
-        antigravity = final.callPackage ./antigravity.nix {
-          nixpkgs = final.path;
-        };
-
         # Pin Google Chrome to specific version for MV2 support
         google-chrome = prev.google-chrome.overrideAttrs (oldAttrs: rec {
           version = "139.0.7258.154";
@@ -81,7 +71,6 @@
             useUserPackages = true;
             users.benji = {
               imports = [
-                vicinae.homeManagerModules.default
                 ./home.nix
               ];
             };

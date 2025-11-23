@@ -53,7 +53,7 @@
     claude-code
     gemini-cli
     codex
-    antigravity
+    antigravity-fhs
     # obsidian
     # synology-drive-client
 
@@ -87,6 +87,7 @@
     gnomeExtensions.spotify-tray
     gnomeExtensions.tailscale-qs
     gnomeExtensions.wiggle
+    gnomeExtensions.vicinae
     # Note: draw-on-your-screen2 not available in nixpkgs
   ];
 
@@ -237,11 +238,5 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-  };
-
-  # Vicinae service
-  services.vicinae = {
-    enable = true;
-    autoStart = true;
   };
 }
