@@ -18,6 +18,9 @@
       url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Vicinae - Desktop search tool
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs = inputs @ {
@@ -26,6 +29,7 @@
     nixos-hardware,
     home-manager,
     solaar,
+    vicinae,
     ...
   }:
   let
@@ -72,6 +76,7 @@
             users.benji = {
               imports = [
                 ./home.nix
+                vicinae.homeManagerModules.default
               ];
             };
             backupFileExtension = "backup";

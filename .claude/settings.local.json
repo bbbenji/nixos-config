@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:patch-diff.githubusercontent.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(git add:*)",
+      "Bash(nix eval:*)",
+      "WebSearch",
+      "WebFetch(domain:docs.vicinae.com)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

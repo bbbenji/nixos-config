@@ -239,4 +239,10 @@
     enable = true;
     nix-direnv.enable = true;
   };
+
+  # Vicinae service
+  services.vicinae = {
+    enable = true;
+    autoStart = true;
+  };
 }
